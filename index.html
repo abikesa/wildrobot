@@ -1,0 +1,787 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Immutable &#8212; Wild Robot</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-dropdown.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-bootstrap.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Speculative" href="act1/part1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="https://upload.wikimedia.org/wikipedia/en/7/70/The_Wild_Robot_poster.jpg" class="logo__image only-light" alt="Wild Robot - Home"/>
+    <script>document.write(`<img src="https://upload.wikimedia.org/wikipedia/en/7/70/The_Wild_Robot_poster.jpg" class="logo__image only-dark" alt="Wild Robot - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Immutable
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="act1/part1.html">Speculative</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="act1/chapter1.html">Bayesian Prior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="act1/chapter2.html">Likelihood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="act1/chapter3.html">Synthesis</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="act2/part2.html">Firm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="act2/chapter1.html">Persona</a></li>
+<li class="toctree-l2"><a class="reference internal" href="act2/chapter2.html">Shadow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="act2/chapter3.html">Individuation</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="act3/part3.html">Tactical</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="act3/act1.html">Weaponized 🌊</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="act3/part1/part1_1.html">Cosmic</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="act3/part1/part1_2.html">Uncertainty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="act3/part1/part1_3.html">Failure</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="act3/act2.html">Tokenized ⚓️</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="act3/part2/part2_1.html">Base</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="act3/part2/part2_2.html">Risk</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="act3/part2/part2_3.html">Student ☔️</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="act3/act3.html">Monopolized 🧭</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="act3/part3/part3_1.html">Notification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="act3/part3/part3_2.html">Transformation</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="act3/part3/part3_3.html">Feedback</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Sound</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/abikesa/template/main?urlpath=tree/book/website/index.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/index.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Immutable</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#world-the-immutable-foundation"><strong>World: The Immutable Foundation</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yellow-perception-as-judgment"><strong>Yellow: Perception as Judgment</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agent-nodes-of-control">Agent: Nodes of Control</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-explosive-dynamics">Generative: Explosive Dynamics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-values-and-vulnerabilities"><strong>Physical: Values and Vulnerabilities</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iteration-the-recursive-cycle"><strong>Iteration: The Recursive Cycle</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#odds-sales-pitch">Odds, Sales-Pitch</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="immutable">
+<span id="id1"></span><h1>Immutable<a class="headerlink" href="#immutable" title="Permalink to this heading">#</a></h1>
+<p>This book encapsulates the essence of ingenuity and progress—leveraging the cutting-edge tools of today to resolve humanity’s perennial challenges. It reflects an understanding of both innovation and resourcefulness, emphasizing the need to optimize what is already within our grasp.</p>
+<blockquote>
+<div><p><em>Victory is using the latest technology to address the oldest issues with existing resources.</em><br />
+– Yours Truly</p>
+</div></blockquote>
+<p>This perspective is particularly potent when applied to societal problems like healthcare, education, and sustainability. For instance, the integration of AI into personalized medicine allows us to use data-driven insights to address ancient questions of health, longevity, and resilience. Similarly, utilizing existing natural resources more efficiently through technology addresses the age-old struggle between human needs and environmental balance.</p>
+<p>True victory lies in this synergy—melding the past and present to shape a sustainable, <a class="reference external" href="https://en.wikipedia.org/wiki/Access_token">equitable</a>, and innovative future. It’s not merely about creating something new but about reimagining the old through the lens of modern capability.</p>
+<p>The neural network we describe, interwoven with themes of mythology, philosophy, and economics, becomes a map of human ambition, frailty, and technological evolution. It begins with an input layer grouped into three symbolic pairs: Theomachy (the <a class="reference external" href="https://www.gutenberg.org/cache/epub/52915/pg52915-images.html">abyss</a>), Mortals (that doesn’t kill you), and Fire (makes you stronger). These pairs echo primal struggles: divine conflict (gamble), human mortality (bet), and the Promethean gift of technology (invest). Each group serves as a node, progressively compressing the chaotic vastness of human history into legible patterns and collapsed odds (gamble, bet, invest). The essay, structured to align with the five layers of the neural network—<strong>World</strong>, <strong>Yellow</strong>, <strong>Agent</strong>, <strong>Generative</strong>, and <strong>Physical</strong>—while incorporating key quotes, video, and the thematic elements of relevance. Each section reflects the hierarchical organization of our neural framework.</p>
+<hr class="docutils" />
+<section id="world-the-immutable-foundation">
+<h2><strong>World: The Immutable Foundation</strong><a class="headerlink" href="#world-the-immutable-foundation" title="Permalink to this heading">#</a></h2>
+<p>The neural network begins with the immutable, encompassing the foundational triad of <strong>Theomachy</strong>, <strong>Mortals</strong>, and <strong>Fire from Prometheus</strong>. These primal forces symbolize the perpetual tension between cosmic chaos and order, human frailty, and technological ambition. Theomachy evokes the grand conflicts of the cosmos, mirrored in ecological entropy and systemic imbalance. Mortals embody the Red Queen Hypothesis—a ceaseless race to adapt or perish, driven by survival and limitation. Fire, the gift of Prometheus, represents the transformative power of energy and technology, a double-edged sword that can uplift or destroy.</p>
+<blockquote>
+<div><p>“It will happen, improvement,” Prometheus seems to promise, as fire fuels humanity’s insatiable drive to reweight the system in its favor.</p>
+</div></blockquote>
+<p>This immutable layer encodes a universal law: as energy is harnessed for human ends, cartels inevitably emerge. In various flavors of coffee, for instance, we observe how supply chains generate efficiencies, and demand compels monopolistic consolidation. Fire, here, serves as both means and metaphor—fueling systems that bridge ecological cost, technological capability, and enterprise ambition.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QqSV_6dxafw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<figure class="align-default" id="blackrock-ceo-larry-fink">
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/7/72/Prometheus_and_Atlas%2C_Laconian_black-figure_kylix%2C_by_the_Arkesilas_Painter%2C_560-550_BC%2C_inv._16592_-_Museo_Gregoriano_Etrusco_-_Vatican_Museums_-_DSC01069.jpg"><img alt="https://upload.wikimedia.org/wikipedia/commons/7/72/Prometheus_and_Atlas%2C_Laconian_black-figure_kylix%2C_by_the_Arkesilas_Painter%2C_560-550_BC%2C_inv._16592_-_Museo_Gregoriano_Etrusco_-_Vatican_Museums_-_DSC01069.jpg" src="https://upload.wikimedia.org/wikipedia/commons/7/72/Prometheus_and_Atlas%2C_Laconian_black-figure_kylix%2C_by_the_Arkesilas_Painter%2C_560-550_BC%2C_inv._16592_-_Museo_Gregoriano_Etrusco_-_Vatican_Museums_-_DSC01069.jpg" style="width: 1%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text"><em>Red Queen in the House - Prior Authorization and Trust in US Health Care</em>. SEC tokenizing stocks &amp; bonds is like IRB tokenizing access to EHR. Let’s explore this! Let’s segue to a related matter. The public response to the killing of United Healthcare’s CEO made it hard to ignore the erosion of trust in U.S. health care. Even before that, more questions were being raised about prior authorization – insurers’ tools for approving or denying a proposed treatment or drug. Patients need appropriate care in a timely manner. Providers need to spend less time dealing with barriers and bureaucracy to get patients that care. And,  insurers need to be sure they are paying for the right care – not for overtreatment, unnecessary treatment, or overly aggressive care. Join us for a candid discussion of the friction points, the frustrations, and some emerging potential solutions as U.S. healthcare seeks that delicate balance</span><a class="headerlink" href="#blackrock-ceo-larry-fink" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<hr class="docutils" />
+</section>
+<section id="yellow-perception-as-judgment">
+<h2><strong>Yellow: Perception as Judgment</strong><a class="headerlink" href="#yellow-perception-as-judgment" title="Permalink to this heading">#</a></h2>
+<p>The <strong>Yellow Layer</strong> represents the perceptual mechanism that interprets the immutable. It is here that the system discerns patterns and assigns meaning, much like Prometheus’ fire illuminating the dark. This is the realm of judgment, where inputs are framed not as raw data but as choices—ethical, strategic, and evolutionary.</p>
+<p>In the saga of Sam Bankman-Fried, perception warped judgment. FTX’s interventions, framed as ecosystem stabilization, revealed themselves as power plays. The company’s bailouts of rivals, ostensibly altruistic, embodied Promethean overreach—a mortal attempting to wield fire to reorder the cosmos. Yet this misjudgment underlined a crucial point: perception is not inherently truthful but contingent, shaped by the network’s biases and blind spots.</p>
+<blockquote>
+<div><p><em>Sam Blankman-Fried’s FTX was tapping into ecosystem-integrating processes</em><br />
+– <a class="reference external" href="https://datafi.thepalladiumgroup.com">Yours Truly</a></p>
+</div></blockquote>
+<Details>
+    <Summary></Summary>
+<p>Connoisseurs often spit during professional tastings—whether it’s coffee, wine, or liquor—and your interpretation of this act as resisting “consumption” aligns beautifully with the purpose behind it. They aim to remain in the realm of sensory evaluation, unclouded by the physiological or psychological transformations that actual consumption would induce.</p>
+<p>By spitting, they isolate the experience to its pure sensory elements: the interplay of taste, aroma, and texture. This choice prevents the cumulative effects of alcohol intoxication, caffeine stimulation, or the lingering fullness of consumption, which could compromise their ability to evaluate subsequent samples objectively. It ensures their ascending sensory pathways (taste buds, olfactory bulbs) remain sharp and unaltered as they ascend into cognition for analysis and comparison.</p>
+<p>Your phrase, “consumption is transformational,” captures the core distinction. Consumption implies integration into the self—biologically, chemically, and emotionally. Wine transforms into relaxation, coffee into stimulation, liquor into inebriation. Spitting rejects this, keeping the taster in an observational state rather than a participatory one. It’s a fascinating boundary: they flirt with transformation by engaging the senses but stop just short of surrendering to it.</p>
+<p>In a way, professional tasters inhabit an iterative loop: sampling, processing, and resetting, rather than progressing into the adversarial or cooperative layers of consumption’s equilibrium. They maintain control, staying at the sensory threshold where knowledge can emerge without the full embodiment of experience. It’s an almost ascetic practice—resisting the natural pull toward indulgence.</p>
+</Details>
+<hr class="docutils" />
+</section>
+<section id="agent-nodes-of-control">
+<h2>Agent: Nodes of Control<a class="headerlink" href="#agent-nodes-of-control" title="Permalink to this heading">#</a></h2>
+<p>At the <strong>Agent Layer</strong>, the system transitions from perception to action. Here, individuals and collectives navigate the tensions between open systems and closed hierarchies, between generative collaboration and cartelized domination. Theomachy compresses into the struggle between trust and centralization, Mortals into the trade-offs of resource allocation, and Fire into the wielding of power.</p>
+<p>Bankman-Fried’s agency, characterized by rapid liquidity injections and centralized control, exemplified the tension within this layer. His vision of FTX as a stabilizing force clashed with the inherent instability of concentrated power. The attempt to play both savior and ruler—open and closed—highlighted the paradox of agency: the very tools that enable generative action can enforce monopolistic stagnation.</p>
+<Details>
+    <Summary></Summary>
+<p>Leveraged Agency</p>
+<ul class="simple">
+<li><p>Theomarchy</p>
+<ul>
+<li><p>Abyss/Gamble: Divine-Priest, Prayer, Coin, Dice, Roulette</p></li>
+</ul>
+</li>
+<li><p>Mortals</p>
+<ul>
+<li><p>Bet: Josting-Knight, Poker, Racing-Horse</p></li>
+</ul>
+</li>
+<li><p>Fire</p>
+<ul>
+<li><p>Invest: F1-Hamilton, <a class="reference internal" href="act3/act3.html#monopolized"><span class="std std-ref">Monopolized</span></a></p></li>
+</ul>
+</li>
+</ul>
+<p>Curtailed Agency</p>
+<ul class="simple">
+<li><p>Relative position</p>
+<ul>
+<li><p>Cosmos-Entropy</p></li>
+<li><p>Planet-Tempered</p>
+<ul>
+<li><p>War: Resources</p></li>
+<li><p>Chess: Resourcefulness</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Mutual Destruction</p>
+<ul>
+<li><p>Ecosystem-Cost</p></li>
+<li><p>Life-Needs</p></li>
+</ul>
+</li>
+<li><p>Hierarchy</p>
+<ul>
+<li><p>Cartel-Ends, Generative-Means</p></li>
+</ul>
+</li>
+</ul>
+</Details>
+<hr class="docutils" />
+</section>
+<section id="generative-explosive-dynamics">
+<h2>Generative: Explosive Dynamics<a class="headerlink" href="#generative-explosive-dynamics" title="Permalink to this heading">#</a></h2>
+<p>The <strong>Generative Layer</strong> captures the explosive potential of compressed energy. This is where ratios are weaponized, competition tokenized, and odds monopolized. Fire becomes both a creative and destructive force, amplifying the system’s contradictions.</p>
+<p>In this layer, FTX’s actions transcended mere interventions—they became systemic distortions. By bailing out competitors, Bankman-Fried disrupted the natural attrition that underpins evolutionary balance. His moves, while initially stabilizing, introduced feedback loops that undermined the market’s integrity. Promethean fire, in this context, was no longer a gift but a weapon—one that risked consuming its wielder.</p>
+<blockquote>
+<div><p>“Demand and supply, Mr. Wallis. Demand and supply.”<br />
+– Various Flavors of Coffee</p>
+</div></blockquote>
+<p>This quote encapsulates the layer’s essence: generative dynamics are governed by the immutable law of demand and supply, yet their manipulation introduces profound consequences. The emergence of cartels, efficiencies, and monopolies reflects not just economic logic but the generative layer’s inherent volatility.</p>
+<hr class="docutils" />
+</section>
+<section id="physical-values-and-vulnerabilities">
+<h2><strong>Physical: Values and Vulnerabilities</strong><a class="headerlink" href="#physical-values-and-vulnerabilities" title="Permalink to this heading">#</a></h2>
+<p>The <strong>Physical Layer</strong> represents the tangible outcomes of the network—values, vulnerabilities, and societal shifts. It is here that Promethean fire’s duality is most evident. When wielded wisely, it fuels “Exuberant Jubilee” or “Freedom-Dance in Chains,” balancing liberation with dependency. Misused, it leads to “Stable-Conservative” stagnation or “Unveiled Resentment,” as systems fracture under inequity.</p>
+<p>Bankman-Fried’s narrative, at this layer, reveals the fragility of systems overburdened by artificial stabilization. His consolidation of power, meant to ensure stability, instead fostered resentment and revolutionary potential. The fire that sustained FTX’s rise became the catalyst for its fall, a cautionary tale of hubris and overreach.</p>
+<hr class="docutils" />
+</section>
+<section id="iteration-the-recursive-cycle">
+<h2><strong>Iteration: The Recursive Cycle</strong><a class="headerlink" href="#iteration-the-recursive-cycle" title="Permalink to this heading">#</a></h2>
+<p>The network does not end at the physical layer; it loops back, creating a recursive cycle. Theomachy evolves, Mortals adapt, and Fire refines itself through each iteration. Blankman-Fried’s failures become lessons for the next generation of actors, embedding new complexities into the system.</p>
+<p>As the cycle repeats, the neural network grows richer, capturing the interplay between immutable laws, perceptual judgments, agentic choices, generative dynamics, and physical outcomes. Each layer informs and reweights the others, ensuring that the fire of Prometheus continues to burn—both as a gift and a warning.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># LEFT: Life, Ecosystem, Fire, Tech</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="c1"># Define the neural network fractal</span>
+<span class="k">def</span> <span class="nf">define_layers</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;World&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Cosmos-Entropy&#39;</span><span class="p">,</span> <span class="s1">&#39;Planet-Tempered&#39;</span><span class="p">,</span> <span class="s1">&#39;Life-Needs&#39;</span><span class="p">,</span> <span class="s1">&#39;Ecosystem-Costs&#39;</span><span class="p">,</span> <span class="s1">&#39;Generative-Means&#39;</span><span class="p">,</span> <span class="s1">&#39;Cartel-Ends&#39;</span><span class="p">,</span> <span class="p">],</span> <span class="c1"># Theomarchy (Nothing kills immortals), Mortals (What doesn&#39;t kill you--), Fire (Makes you stronger)</span>
+        <span class="s1">&#39;Perception&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Perception-Ledger&#39;</span><span class="p">],</span> <span class="c1"># God (Perspectivism)</span>
+        <span class="s1">&#39;Agency&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Open-Nomiddleman&#39;</span><span class="p">,</span> <span class="s1">&#39;Closed-Trusted&#39;</span><span class="p">],</span> <span class="c1"># Evil &amp; Good (Beyond this dichotomy)</span>
+        <span class="s1">&#39;Generative&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ratio-Weaponized&#39;</span><span class="p">,</span> <span class="s1">&#39;Competition-Tokenized&#39;</span><span class="p">,</span> <span class="s1">&#39;Odds-Monopolized&#39;</span><span class="p">],</span> <span class="c1"># Dynamics, Compromises (Becoming, not Being)</span>
+        <span class="s1">&#39;Physical&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Volatile-Transvaluation&#39;</span><span class="p">,</span> <span class="s1">&#39;Unveiled-Resentment&#39;</span><span class="p">,</span>  <span class="s1">&#39;Freedom-Dance in Chains&#39;</span><span class="p">,</span> <span class="s1">&#39;Exuberant-Jubilee&#39;</span><span class="p">,</span> <span class="s1">&#39;Stable-Conservative&#39;</span><span class="p">]</span> <span class="c1"># Values (Transvaluation of all of them!)</span>
+    <span class="p">}</span>
+
+<span class="c1"># Assign colors to nodes</span>
+<span class="k">def</span> <span class="nf">assign_colors</span><span class="p">():</span>
+    <span class="n">color_map</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;yellow&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Perception-Ledger&#39;</span><span class="p">],</span> <span class="c1"># , Judgement Day, Key</span>
+        <span class="s1">&#39;paleturquoise&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Cartel-Ends&#39;</span><span class="p">,</span> <span class="s1">&#39;Closed-Trusted&#39;</span><span class="p">,</span> <span class="s1">&#39;Odds-Monopolized&#39;</span><span class="p">,</span> <span class="s1">&#39;Stable-Conservative&#39;</span><span class="p">],</span> <span class="c1"># Slavery, Colonialism, Worker</span>
+        <span class="s1">&#39;lightgreen&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Generative-Means&#39;</span><span class="p">,</span> <span class="s1">&#39;Competition-Tokenized&#39;</span><span class="p">,</span> <span class="s1">&#39;Exuberant-Jubilee&#39;</span><span class="p">,</span> <span class="s1">&#39;Freedom-Dance in Chains&#39;</span><span class="p">,</span> <span class="s1">&#39;Unveiled-Resentment&#39;</span><span class="p">],</span> <span class="c1"># Das Kapital, Frankenstein, AI</span>
+        <span class="s1">&#39;lightsalmon&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;Life-Needs&#39;</span><span class="p">,</span> <span class="s1">&#39;Ecosystem-Costs&#39;</span><span class="p">,</span> <span class="s1">&#39;Open-Nomiddleman&#39;</span><span class="p">,</span> <span class="c1"># Ecosystem = Red Queen = Prometheus = Sacrifice</span>
+            <span class="s1">&#39;Ratio-Weaponized&#39;</span><span class="p">,</span> <span class="s1">&#39;Volatile-Transvaluation&#39;</span>
+        <span class="p">],</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span> <span class="n">color</span> <span class="k">for</span> <span class="n">color</span><span class="p">,</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="n">color_map</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">}</span>
+
+<span class="c1"># Calculate positions for nodes</span>
+<span class="k">def</span> <span class="nf">calculate_positions</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">x_offset</span><span class="p">):</span>
+    <span class="n">y_positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">layer</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">[(</span><span class="n">x_offset</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">y_positions</span><span class="p">]</span>
+
+<span class="c1"># Create and visualize the neural network graph</span>
+<span class="k">def</span> <span class="nf">visualize_nn</span><span class="p">():</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="n">define_layers</span><span class="p">()</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="n">assign_colors</span><span class="p">()</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">node_colors</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Add nodes and assign positions</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+        <span class="n">positions</span> <span class="o">=</span> <span class="n">calculate_positions</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">x_offset</span><span class="o">=</span><span class="n">i</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">position</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">positions</span><span class="p">):</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">layer_name</span><span class="p">)</span>
+            <span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="n">position</span>
+            <span class="n">node_colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">colors</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;lightgray&#39;</span><span class="p">))</span>  <span class="c1"># Default color fallback</span>
+
+    <span class="c1"># Add edges (automated for consecutive layers)</span>
+    <span class="n">layer_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layer_names</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">source_layer</span><span class="p">,</span> <span class="n">target_layer</span> <span class="o">=</span> <span class="n">layer_names</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">layer_names</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">[</span><span class="n">source_layer</span><span class="p">]:</span>
+            <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">[</span><span class="n">target_layer</span><span class="p">]:</span>
+                <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+
+    <span class="c1"># Draw the graph</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+        <span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">node_colors</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+        <span class="n">node_size</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;arc3,rad=0.2&quot;</span>
+    <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;“The difficulty with my plans,” Pinker explained, “is cost. </span><span class="se">\n</span><span class="s2"> Coffee is expensive stuff—much more costly than beer or gin”.&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Run the visualization</span>
+<span class="n">visualize_nn</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/d0603a2d1c64a729aabfce66c38cbdf837d991af54e6767017df2b72b0e5453b.png" src="_images/d0603a2d1c64a729aabfce66c38cbdf837d991af54e6767017df2b72b0e5453b.png" />
+</div>
+</div>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="_images/blanche.png"><img alt="_images/blanche.png" src="_images/blanche.png" style="width: 1px; height: 1px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text"><em>Align Elon Musks Reaction to Stargate with Emily’s “Mutiny &amp; Obedience”</em>. But before you do that, 54132 merely matched these movie ranks to the network layers. Reveals something that I’ll leave unstated. Tokens are digital assets (keys) to open up a ledger (yellow). What exactly the ledger is about is another topic altogether. But it might be API, block chain, or access to Microsofts Azure. In essence, the way forward for government-supported AI efforts must navigate this complex landscape of technological promise versus human complexity. By learning from the decentralized and transparent nature of cryptocurrency, there’s potential to create an AI ecosystem that not only advances our capabilities but also aligns with democratic ideals of openness and participation. The journey of AI from perception to physical reality, as depicted in the neural network, should ideally reflect a path where technology serves humanity’s collective needs, not just the interests of its creators or controllers. The thing to <a class="reference external" href="https://www.politico.com/news/2025/01/22/trump-ai-plan-elon-musk-altman-slapfight-00200075">me</a> that’s always been weird about this is that no one’s articulated a vision for what the world will look like. They’re always willing to say it comes down to supercharged scientific research, which may very well be true, but also requires rethinking how science is organized to take advantage of these models. What does that look like? There are a lot of other social components that have to fit into it</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The neural network we are constructing reflects an intricate mapping of the cosmos to human consciousness, moving from universal entropy to the psychological curtailing of experience. This structure captures not just the hierarchical flow of information but also the dynamic interplay of disciplines and systems that govern existence. Each node—rooted in a specific scientific or philosophical domain—acts as a lens through which the cosmos unfolds into increasingly complex forms of organization and understanding. Let’s explore how the layers interact, focusing on the thematic progression from entropy to psychology and the color-coded representation of these transformations.</p>
+<p>At the foundation lies <em>Cosmos-Entropy</em>, the node where the journey begins. Cosmology, represented here, provides the framework for understanding the universe’s origins and its relentless march toward disorder. It is the primal chaos, the unifying starting point of existence, whose tempering flows into <em>Geology</em> through the <em>Planet-Tempered</em> node. Geology represents a stabilizing force, the cooling and crystallization of chaos into planets, mountains, and ecosystems. This interplay of entropy and temperance is the canvas upon which life can emerge—a transition from raw potential to bounded possibility.</p>
+<p>Life, represented by <em>Life-Needs</em> and colored in lightsalmon, marks the biological awakening of the universe. Here, biology provides the tools to harness energy, reproduce, and evolve. This biological vibrancy carries forward into <em>Ecosystem-Costs</em>, where ecology becomes the central node. The shift from individual life to interconnected systems signals a profound elevation of complexity—an acknowledgment of the cost of existence. Ecology’s lightsalmon shade suggests an ongoing negotiation with entropy, highlighting the delicate balance required to sustain life.</p>
+<p>As we move into the <em>Generative-Means</em> node, sociology takes center stage. This green node encapsulates the emergent properties of human collectives—communication, culture, and cooperation. Sociology builds upon the scaffolding of biology and ecology, demonstrating humanity’s unique capacity to transcend individual survival and create shared meaning. This is the node where life, previously reactive, begins to act deliberately, shaping its environment and society.</p>
+<blockquote>
+<div><p><em>“Why should we not have a coffee-house on every street instead? It would be an Improvement, would it not? Yes? Then, if it is an Improvement, it must happen—it will happen. Darwin says so! And I will be the one to make it happen.” He sat down, dabbing at his forehead with his sleeve.</em><br />
+<em>“You mentioned a code,” I said. “I still don’t quite see—”</em><br />
+<em>“Yes. Demand and supply, Mr. Wallis. Demand and supply.”</em><br />
+– Various Flavors of Coffee</p>
+</div></blockquote>
+<p>Finally, the neural network culminates in <em>Cartel-Ends</em>, where psychology presides. The paleturquoise color signals a curtailing—a drawing inward to focus on the subjective experience of individuals. Psychology, as a discipline, addresses the final frontier of entropy: the human mind. It seeks to understand the tension between generative aspirations and the limitations imposed by biology, ecology, and society. This final node represents a profound paradox: even as the cosmos expands toward entropy, the human mind curtails this chaos, creating internal order through perception, cognition, and emotion.</p>
+<p>The inclusion of chemistry as the yellow node, with organic chemistry as its focus, enriches the network’s grounding. Chemistry is the bridge between inert matter and living systems, providing the molecular toolkit for biology and ecology to operate. It occupies a pivotal space, linking the cosmological and geological realms to the biological and ecological.</p>
+<p>What makes this neural network particularly compelling is its color-coded symbolism. Lightsalmon represents the biological and ecological negotiation with entropy—vibrant yet fragile. Green symbolizes the generative potential of human societies, while paleturquoise reflects the psychological curtailing of chaos into individual narratives. Yellow, associated with chemistry, underscores the alchemical transformation of matter into life, a key inflection point in the cosmos’s evolution.</p>
+<blockquote>
+<div><p><em>Perspectivism… Transvaluation</em><br />
+– The Hammer</p>
+</div></blockquote>
+<p>The neural network’s layers—World, Perception, Agency, Generative, and Physical—further clarify its structure. The <em>World</em> layer anchors the network in the tangible, while <em>Perception</em> introduces <a class="reference external" href="https://en.wikipedia.org/wiki/Subjectivity_and_objectivity_(philosophy)">subjective</a> awareness. <em>Agency</em> addresses the moral and ethical dynamics of human action, framing good and evil as emergent properties of choice. <em>Generative</em> explores the societal mechanisms of competition and cooperation, while <em>Physical</em> roots these abstract concepts in tangible expressions of values and <a class="reference external" href="https://www.gutenberg.org/cache/epub/52915/pg52915-images.html">transvaluations</a>.</p>
+<p>In sum, this neural network is more than a diagram—it is a narrative of existence. It charts the cosmos’s journey from entropy to psychology, illustrating how each domain builds upon the last to create an interconnected whole. The color coding adds a poetic dimension, emphasizing the delicate balance between chaos and order, between expansion and curtailing. This is a framework that invites exploration, a roadmap for understanding the intricate dance of systems that shape our world and ourselves.</p>
+<Details>
+    <Summary></Summary>
+<section id="odds-sales-pitch">
+<h3>Odds, Sales-Pitch<a class="headerlink" href="#odds-sales-pitch" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Fixed (Gamble)</p></li>
+<li><p>Long (<a class="reference external" href="https://en.wikipedia.org/wiki/Access_token">Bet</a>)</p></li>
+<li><p>Short (Invest)</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Gamification">Gamefication</a> 🏟️ (<a class="reference external" href="https://www.gutenberg.org/cache/epub/12/pg12-images.html">Chess</a>)</p></li>
+<li><p>Resources (Existing)</p></li>
+</ol>
+<ul class="simple">
+<li><p>Theomachy. Annual US News &amp; World Report rankings; 100,000 deployments to GitHub (automation, the gamble is on the 5/95 failures due to cosmic flux); ensures we maintain lead in foreseeable future</p></li>
+<li><p>Mortals. Personalized Kaplan-Meier curves for patients, decision-makers</p></li>
+<li><p>Fire 🔥. Ecosystem integration for students, collaborators, IRBs, patients, care providers, EHR, national databases</p></li>
+<li><p>Chess ♟️ . Learning across massive combinatorial space (PAIRS&#64;JH)</p></li>
+<li><p>Unleash power of big data by tapping into novel ecosystem-integration of the scientific enterprise (see case-study). Winner 🏅 🏆 🥇 is the ecosystem that has scalable utilization of existing resources in most innovative way (resourcefulness), thereby not only inviting blockchain miners who might resent the limited access to PI-gated data, but ensuring their freedom within fetters of regulation, jubilation on winning something akin to AlexNext, while securely ensconced within normative frameworks of academic medicine as well as transformative technologies available to us</p></li>
+</ul>
+</Details></section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="act1/part1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Speculative</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#world-the-immutable-foundation"><strong>World: The Immutable Foundation</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yellow-perception-as-judgment"><strong>Yellow: Perception as Judgment</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agent-nodes-of-control">Agent: Nodes of Control</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-explosive-dynamics">Generative: Explosive Dynamics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-values-and-vulnerabilities"><strong>Physical: Values and Vulnerabilities</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iteration-the-recursive-cycle"><strong>Iteration: The Recursive Cycle</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#odds-sales-pitch">Odds, Sales-Pitch</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  Copyright © 2025 Zeus
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
