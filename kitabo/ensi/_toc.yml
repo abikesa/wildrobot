@@ -5,21 +5,21 @@ chapters:
   # Sing O Muse!
   - file: act1/part1
     sections:
-      - title: Bayesian Prior
+      - title: Life
         file: act1/chapter1
-      - title: Likelihood
+      - title: Ecosystem
         file: act1/chapter2
-      - title: Synthesis
+      - title: Resilience
         file: act1/chapter3
         
   # Sing O Muse!
   - file: act2/part2
     sections:
-      - title: Persona
+      - title: Prometheus
         file: act2/chapter1
-      - title: Shadow
+      - title: Sacrifice
         file: act2/chapter2
-      - title: Individuation
+      - title: Innovation
         file: act2/chapter3
 
   # Apollo
