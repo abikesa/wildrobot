@@ -1,4 +1,5 @@
-# Sound
+(victory)=
+# Victory
 
 *Y'already know!*     
 -- Tyrone
