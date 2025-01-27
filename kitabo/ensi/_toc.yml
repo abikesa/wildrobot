@@ -19,7 +19,7 @@ chapters:
         file: act2/chapter1
       - title: Sacrifice
         file: act2/chapter2
-      - title: Innovation
+      - title: `Innovation
         file: act2/chapter3
 
   # Apollo
@@ -37,20 +37,20 @@ chapters:
       - title: 'Tokenized ⚓️'
         file: act3/act2
         sections:
-          - title: Patient
+          - title: Freedom-in-Fetters
             file: act3/part2/part2_1
-          - title: Careprovider
+          - title: Dancing-in-Chains
             file: act3/part2/part2_2
-          - title: 'Student ☔️'
+          - title: 'Born-to-Etiquette ☔️'
             file: act3/part2/part2_3
       - title: 'Monopolized 🧭'
         file: act3/act3
         sections:
-          - title: Notification
+          - title: Traditional
             file: act3/part3/part3_1
-          - title: Backend
+          - title: Normative
             file: act3/part3/part3_2
-          - title: Feedback
+          - title: Stable
             file: act3/part3/part3_3
 
   - file: bibliography
