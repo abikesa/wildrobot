@@ -11,7 +11,7 @@
 width: 1%
 name: Wild Robot
 ---
-_Resources, Needs, Costs, Supply, Demand_. Everyone is talking about "Chinese efficiency" but the reality is more like "American corporate inefficiency". What mattered most to Big Tech was not the AI product itself, but the fact that it kept their wallstreet ponzi scheme going. The skyrocketing stocks, the billions in government funds, the gradual tech dystopia they were creating. Those were the features, not the flaws and bugs.
+_Geopolitics: Resources, Needs, Costs, Supply, Demand_. Everyone is talking about "Chinese efficiency" but the reality is more like "American corporate inefficiency". What mattered most to Big Tech was not the AI product itself, but the fact that it kept their wallstreet ponzi scheme going. The skyrocketing stocks, the billions in government funds, the gradual tech dystopia they were creating. Those were the features, not the flaws and bugs.
 ```
 *Career and political appointees (alpha) in the Executive Branch have a duty to align (y) Federal spending and action (-c) with the will of the American people (Xb) as expressed through Presidential priorities (r)*      
 -- Errand Boy
@@ -30,7 +30,7 @@ _Resources, Needs, Costs, Supply, Demand_. Everyone is talking about "Chinese ef
    - Twice-as-fast to be ahead 
    - Parallel processing, Nvidia chips (restrict to principality)
 4. Gamified Exchanges (Supply, Economics-Finance), Xβ
-   - Run fast-and-faster just to remain in same place 
+   - Iterative: Run fast-and-faster just to remain in same place 
    - Portfolio theory of beta, Red Queen through a looking glass
    - Weaponize, Tokenize, Monopolize supply-chain of Nvidia chips
 5. Victory & Improvement (Demand, Philosophy-Theology), r
