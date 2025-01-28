@@ -1,5 +1,5 @@
 (victory)=
-# Victory & Improvement, $r$
+# Victory & Improvement, *r*
 
 *Y'already know!*     
 -- Tyrone
