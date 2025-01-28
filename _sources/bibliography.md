@@ -14,7 +14,7 @@ name: Wild Robot
 _Geopolitics: Resources, Needs, Costs, Supply, Demand_. Everyone is talking about "Chinese efficiency" but the reality is more like "American corporate inefficiency". What mattered most to Big Tech was not the AI product itself, but the fact that it kept their wallstreet ponzi scheme going. The skyrocketing stocks, the billions in government funds, the gradual tech dystopia they were creating. Those were the features, not the flaws and bugs.
 ```
 *Career and political appointees (α) in the Executive Branch have a duty to align (y) Federal spending and action (-c) with the will of the American people (Xβ) as expressed through Presidential priorities (r)*      
--- Errand Boy
+-- [Errand Boy](https://www.youtube.com/watch?v=uj93wjEzW5w)
 
 ```{bibliography}
 ```
