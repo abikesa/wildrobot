@@ -25,7 +25,7 @@ _Geopolitics: Resources, Needs, Costs, Supply, Demand_. Everyone is talking abou
    - Code: Costs, Supply, Demand
 2. Mortals & Workers (Needs, Biology-Ecology), -c (folks)
    - Speculative: Poker, Workers productivity
-3. Fikre & Double-Agents (Costs, Sociology-Psychology), α (bubble, detect b.s.)
+3. Fikre & Double-Agents (Costs, Sociology-Psychology), α (counterfactual: outside bubble, b.s. detector)
    - Long: Horse & F1 racing, Jokeys & Lewis Hamilton
    - Twice-as-fast to be ahead 
    - Parallel processing, Nvidia chips (restrict to principality)
