@@ -37,6 +37,6 @@ _Geopolitics: Resources, Needs, Costs, Supply, Demand_. Everyone is talking abou
    - [Collapsed](https://www.the-independent.com/news/world/americas/obama-situation-room-white-house-president-decision-making-a8378186.html): Stable heirarchy in short run (ie twice as fast, ahead)
    - High on own supply: much wealth & peace is th'impostume that inward breaks silicon valley
    - Meanwhile, other players in principality gain from local ecosystem
-   - Unveiled resentment in other principalities
+   - Unveiled resentment in other principalities: think, China
    - Transvaluation of their values, wielding a hammer, and unleashing DeepSeek
 
