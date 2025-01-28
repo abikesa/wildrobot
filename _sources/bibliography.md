@@ -24,7 +24,7 @@ _Geopolitics: Resources, Needs, Costs, Supply, Demand_. Everyone is talking abou
    - Inheritence: Immutable laws & resources
    - Code: Costs, Supply, Demand
 2. Mortals & Workers (Needs, Biology-Ecology), -c (folks)
-   - Speculative: Poker, Workers productivity
+   - Speculative: Poker, Workers & Kapital, [Cost](https://en.wikipedia.org/wiki/Tragedy_of_the_commons)
 3. Fikre & Double-Agents (Costs, Sociology-Psychology), α (counterfactual)
    - Long: Horse & F1 racing, Jokeys & Lewis Hamilton
    - Twice-as-fast to be ahead 
